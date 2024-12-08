@@ -18,7 +18,6 @@ BOOL CALLBACK MonitorEnumProc(HMONITOR hMonitor, HDC hdcMonitor, LPRECT lprcMoni
             << L"Work Area: (" << miex.rcWork.left << L", " << miex.rcWork.top << L") - "
             << L"(" << miex.rcWork.right << L", " << miex.rcWork.bottom << L")\r\n"
             << L"Primary: " << ((miex.dwFlags & MONITORINFOF_PRIMARY) ? L"Yes" : L"No") << L"\r\n\r\n";
-
     }
     return TRUE;
 }
@@ -114,7 +113,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
             int newY = static_cast<int>(std::floor(ratio * 1440.0f)); // 计算新的 y 值并向下取整
             SetCursorPos(2559, newY);
         }
-        //检测鼠标状态，如果是拖动，则等上一秒看是不是想要吸附在上面
+        //吸附功能待做：方案一：检测鼠标状态，如果是拖动，则等上一秒看是不是想要吸附在上面。方案二：设置一个区域不穿越。
 
         Sleep(1); // 减少 CPU 占用，避免频繁跳动
     }
